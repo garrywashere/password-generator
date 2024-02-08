@@ -38,8 +38,13 @@ class generator:
                     digi_count +=1
                 elif char in self.spec_bank:
                     spec_count +=1
-            
-            if lower_char_count >= strength and upper_char_count >= strength and digi_count >= strength and spec_count >= strength:
+                    
+            if (
+                lower_char_count >= strength
+                and upper_char_count >= strength
+                and digi_count >= strength
+                and spec_count >= strength
+            ):
                 running = False
                     
         return "".join(password)
