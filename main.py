@@ -38,4 +38,8 @@ while running:
         running = False
             
 password = "".join(password)
-print(password)
+pass_len = len(password)
+
+print("*"*pass_len)
+print("\n"+password+"\n")
+print("*"*pass_len)
