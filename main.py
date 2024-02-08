@@ -3,22 +3,27 @@
 
 import random, string
 
-lower_char_bank = string.ascii_lowercase
-upper_char_bank = string.ascii_uppercase
-digi_bank = string.digits
-spec_bank = "!@#$%^&*_-"
+STRENGTH = 4
+
+lower_char_bank = [char for char in string.ascii_lowercase]
+upper_char_bank = [char for char in string.ascii_uppercase]
+digi_bank = [char for char in string.digits]
+spec_bank = [char for char in "!@#$%^&*_-"]
 
 all = lower_char_bank + upper_char_bank + digi_bank + spec_bank
 
-chars = int(input("How many characters? "))
+try:
+    chars = int(input("How many characters? "))
+except ValueError:
+    chars = 0
 
-if chars < 8:
-    chars = 8
-
-lower_char_count, upper_char_count, digi_count, spec_count = 0,0,0,0
+min_length = STRENGTH * 4
+if chars < min_length:
+    chars = min_length
 
 running = True
 while running:
+    lower_char_count, upper_char_count, digi_count, spec_count = 0, 0, 0, 0
     password = []
 
     for x in range(chars):
@@ -34,7 +39,7 @@ while running:
         elif char in spec_bank:
             spec_count +=1
     
-    if lower_char_count > 1 and upper_char_count > 1 and digi_count > 1 and spec_count > 1:
+    if lower_char_count >= STRENGTH and upper_char_count >= STRENGTH and digi_count >= STRENGTH and spec_count >= STRENGTH:
         running = False
             
 password = "".join(password)
