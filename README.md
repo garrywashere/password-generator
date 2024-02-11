@@ -14,16 +14,35 @@ This Python script provides a simple password generator that allows users to spe
 ## Usage
 1. Clone the repository:
 
-   ```git clone https://github.com/garrywashere/password-generator.git```
+   ```bash
+   git clone https://github.com/garrywashere/password-generator.git
+   ```
 
 2. Navigate to the project directory:
 
-   ```cd password-generator```
+   ```bash
+   cd password-generator
+   ```
 
-3. Run the script:
+3. Import the script in your program:
 
-   ```python pass_gen.py```
+   ```python
+   from password_generator import Generator
+   gen = Generator()
 
-4. Follow the prompts to input the desired length and strength for the password.
+   new_password = gen.generate(8, 1)
+   ```
 
-5. The generated password will be displayed along with decorative characters for emphasis.
+5. The generated password will be returned.
+   - The `length` parameter determines the total number of characters in the password (minimum `strength * 4`)
+   - The `strength` parameter determines the minimum number of each type of character included in the password. Example:
+   - ```python
+      gen.generate(4, 1)
+      # At least one of each type of character is used
+      '8-vR'
+      ```
+   - ```python
+      gen.generate(8, 2)
+      # At least two of each type of character are used
+      'g_9z2XU^'
+      ```
